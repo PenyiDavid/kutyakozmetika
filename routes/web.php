@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FoglalasController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,5 +20,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/foglalasok', [FoglalasController::class, 'index'])->middleware('auth')->name('foglalasok.index');
-
+Route::get('/foglalasok/show/{id}', [FoglalasController::class, 'show'])->middleware(AdminMiddleware::class)->name('foglalasok.show');
 require __DIR__.'/auth.php';

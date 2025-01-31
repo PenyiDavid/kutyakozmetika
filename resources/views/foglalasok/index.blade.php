@@ -15,6 +15,14 @@
             <ul>
                 <li>{{$foglalas->datum}}</li>
                 <li>{{$foglalas->ido}}</li>
+                @if(auth()->check() && auth()->user()->role == 'admin')
+                    <form action="{{ route('foglalasok.show', $foglalas->id) }}" method="GET">
+                        @csrf
+                        <button type="submit">Megnézem</button>
+                    </form>
+
+                @endif
+
             </ul>
         @endforeach
     </ol>

@@ -14,4 +14,10 @@ class FoglalasController extends Controller
         //$foglalasok = Foglalas::with('user')->get(); //eager, de nincs kapcsolat a modelben
         return view('foglalasok.index', compact('foglalasok'));
     }
+
+    public function show($id)
+    {
+        $foglalas = Foglalas::find($id);
+        return view('foglalasok.show', compact('foglalas'));
+    }
 }
